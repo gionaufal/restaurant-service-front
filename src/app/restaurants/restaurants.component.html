@@ -1,0 +1,27 @@
+<h1 class='text-center'>
+    {{title}}
+</h1>
+
+<form>
+  <div class="form-group">
+    <label for="restaurant">Nome</label>
+    <input type="text" class="form-control" id="restaurant" aria-describedby="restaurantHelp" placeholder="Digite para pesquisar..." #filter (keyup)="0">
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Deletar</th>
+      <th>Editar</th>
+      <th>Restaurante</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of (restaurants | async | filterData: filter.value : 'name')">
+      <td>D</td>
+      <td>E</td>
+      <td>{{ restaurant.name }}</td>
+    </tr>
+  </tbody>
+</table>
