@@ -11,6 +11,7 @@ import { RestaurantsComponent} from './restaurants/restaurants.component';
 import { HomeComponent } from './home/home.component';
 import { RestaurantService} from './restaurant.service';
 import { Restaurant } from './restaurants/restaurant';
+import { RestaurantFormComponent } from './restaurants/restaurant-form/restaurant-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { Restaurant } from './restaurants/restaurant';
     NavbarComponent,
     RestaurantsComponent,
     HomeComponent,
-    FilterData
+    FilterData,
+    RestaurantFormComponent
   ],
   imports: [
     BrowserModule,

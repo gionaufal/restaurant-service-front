@@ -12,9 +12,16 @@ export class RestaurantsComponent implements OnInit {
 
   restaurants: Observable<string[]>;
 
-  constructor(private restauratService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
-    this.restaurants = this.restauratService.listRestaurants();
+    this.restaurants = this.restaurantService.listRestaurants();
+  }
+
+  deleteRestaurant(restaurant) {
+    if (confirm("Você tem certeza que quer deletar o restaurante " + restaurant.name + "?")) {
+      this.restaurantService.deleteRestaurant(restaurant.id)
+        .subscribe(null);
+    }
   }
 }
