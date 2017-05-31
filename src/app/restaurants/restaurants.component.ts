@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RestaurantService } from '../restaurant.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import { Restaurant } from './restaurant';
 
 @Component({
@@ -10,18 +11,25 @@ import { Restaurant } from './restaurant';
 export class RestaurantsComponent implements OnInit {
   title = 'Restaurantes';
 
-  restaurants: Observable<string[]>;
+  private restaurants: Restaurant[] = []
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(
+    private restaurantService: RestaurantService,
+    private router : Router
+  ) { }
 
   ngOnInit() {
-    this.restaurants = this.restaurantService.listRestaurants();
+    this.restaurantService.listRestaurants()
+      .subscribe(data => this.restaurants = data)
   }
 
   deleteRestaurant(restaurant) {
     if (confirm("Você tem certeza que quer deletar o restaurante " + restaurant.name + "?")) {
+      var index = this.restaurants.indexOf(restaurant);
+      this.restaurants.splice(index, 1);
+
       this.restaurantService.deleteRestaurant(restaurant.id)
-        .subscribe(null);
+        .subscribe(data => this.router.navigate(['/restaurants']));
     }
   }
 }

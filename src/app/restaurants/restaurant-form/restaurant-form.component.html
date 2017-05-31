@@ -1,12 +1,16 @@
-<div>
-  <h1>{{ title }}</h1>
-  <form (ngSubmit)="save()">
-    <div>
-      <label for="name">Nome</label>
-      <input type="text" id="name" required [(ngModel)]="restaurant.name" name='name'>
+<div class="container">
+  <div class="row">
+    <div class='form-group col-md-6'>
+      <h1>{{ title }}</h1>
+      <form (ngSubmit)="save()">
+        <div>
+          <label for="name">Nome</label>
+          <input type="text" id="name" required [(ngModel)]="restaurant.name" name='name' class='form-control'>
+        </div>
+        <button type="submit" class='form-control'>Enviar</button>
+      </form>
+      <hr />
+      <a routerLink="/restaurants">Voltar</a>
     </div>
-    <button type="submit">Enviar</button>
-  </form>
-  <hr />
-  <a routerLink="/restaurants">Voltar</a>
+  </div>
 </div>

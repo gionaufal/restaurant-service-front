@@ -1,27 +1,30 @@
-<h1 class='text-center'>
-    {{title}}
-</h1>
+<div class="container">
+  <h1 class='text-center'>
+      {{title}}
+  </h1>
 
-<form>
-  <div class="form-group">
-    <label for="restaurant">Nome</label>
-    <input type="text" class="form-control" id="restaurant" aria-describedby="restaurantHelp" placeholder="Digite para pesquisar..." #filter (keyup)="0">
-  </div>
-</form>
+  <form>
+    <div class="form-group">
+      <label for="restaurant">Nome</label>
+      <input type="text" class="form-control" id="restaurant" aria-describedby="restaurantHelp" placeholder="Digite para pesquisar..." #filter (keyup)="0">
+    </div>
+    <button [routerLink]="['/restaurants/new']" class='btn btn-default'>Novo restaurante</button>
+  </form>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Deletar</th>
-      <th>Editar</th>
-      <th>Restaurante</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let restaurant of (restaurants | async | filterData: filter.value : 'name')">
-      <td><a (click)="deleteRestaurant(restaurant)" href="">Deletar</a></td>
-      <td><a [routerLink]="['/restaurants', restaurant.id]">Editar</a></td>
-      <td>{{ restaurant.name }}</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Deletar</th>
+        <th>Editar</th>
+        <th>Restaurante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restaurant of (restaurants | filterData: filter.value : 'name')">
+        <td><button [routerLink]="['/restaurants/', restaurant.id]" class='btn btn-info'>Editar</button></td>
+        <td><button (click)="deleteRestaurant(restaurant)" class='btn btn-danger'>Deletar</button></td>
+        <td>{{ restaurant.name }}</td>
+      </tr>
+    </tbody>
+  </table>  
+</div>

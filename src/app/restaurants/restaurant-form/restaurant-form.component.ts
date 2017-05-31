@@ -24,8 +24,6 @@ export class RestaurantFormComponent implements OnInit {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
 
-      this.title = id ? 'Editar Restaurante' : 'Criar Restaurante';
-
       if (!id)
         return;
 
@@ -33,6 +31,9 @@ export class RestaurantFormComponent implements OnInit {
         .subscribe(
           restaurant => this.restaurant = restaurant,
           response => {});
+
+      this.title = this.restaurant.id ? 'Editar Restaurante' : 'Criar Restaurante';
+
     });
   }
 

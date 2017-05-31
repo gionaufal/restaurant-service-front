@@ -10,7 +10,8 @@ export class RestaurantService {
   private url = 'https://restaurantsystemapi.herokuapp.com/';
 
   getRestaurant(id){
-    return this.jsonp.get(this.url + 'restaurants/' + id)
+    console.log(id);
+    return this.http.get(this.url + 'restaurants/' + id)
       .map(res => res.json());
   }
 
@@ -26,17 +27,18 @@ export class RestaurantService {
   }
 
   addRestaurant(restaurant){
-  return this.http.post(this.url + 'restaurants/', {'restaurant': restaurant})
+  return this.http.post(this.url + 'restaurants/', {'name': restaurant.name})
     .map(res => res.json());
   }
 
   updateRestaurant(restaurant){
-    return this.jsonp.put(this.url + 'restaurants/' + restaurant.id, {'restaurant': restaurant})
+    return this.http.put(this.url + 'restaurants/' + restaurant.id, {'name': restaurant.name})
       .map(res => res.json());
   }
 
   deleteRestaurant(id){
-    return this.jsonp.delete(this.url + '/' + id)
-      .map(res => res.json());
+    console.log(this.url+'restaurants/'+id)
+    return this.http.delete(this.url + 'restaurants/' + id)
+      .map(res => res.json());
   }
 }
