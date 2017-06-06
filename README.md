@@ -1,4 +1,6 @@
-# RestaurantFront
+# Restaurant System - Angular
+
+This is the front end that talks to the [Restaurant System API](https://github.com/gionaufal/restaurant-system-api). See it live [here](http://restaurant-system-angular.surge.sh)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
 
